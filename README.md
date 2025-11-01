@@ -1,4 +1,4 @@
-## [![janeth's Header](https://github.com/janethavi/janethavi/blob/main/Images/janeth-cover.png)](https://janethavishka.wordpress.com/)
+## [![janeth's Header](https://github.com/user-attachments/assets/64300e63-6dc7-4049-ab27-291c5c593fae)](https://janethfernando.me/)
 
 <p align='center'>
 <a href="https://www.linkedin.com/in/janethfernando"><img height="30" src="https://github.com/janethavi/janethavi/blob/main/Icons/linkedin.png?raw=true"></a>
