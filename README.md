@@ -11,4 +11,4 @@
 
 <h2 align="center">Hello Folks! I'm Janeth .... 👋🤓</h2>
 
-Currently, I am working as a Senior Site Reliability Engineer at [WSO2](https://wso2.com). I am also a contributor for the [SEF Community](https://sefglobal.org). Feel free to contact me from any medium mentioned above if you have anything to ask.
+Currently, I am working as an Associate Lead - Site Reliability Engineer at [WSO2](https://wso2.com). I am also a contributor for the [SEF Community](https://sefglobal.org). Feel free to contact me from any medium mentioned above if you have anything to ask.
