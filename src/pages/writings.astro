@@ -34,7 +34,6 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
             <p class="mb-3 text-sm uppercase tracking-wider text-gray-500">{post.data.category}</p>
             <h2 class="mb-3 text-2xl font-bold text-gray-900">{post.data.title}</h2>
             <p class="mb-4 leading-relaxed text-gray-600">{post.data.excerpt}</p>
-            <p class="text-gray-700">Janeth Fernando</p>
             <p class="text-gray-500">
               {post.data.date} · {post.data.readTime}
             </p>
