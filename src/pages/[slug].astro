@@ -14,7 +14,7 @@ const postUrl = `${siteUrl}/${post.slug}/`;
 ---
 
 <Layout
-  title={`${post.data.title} — Janeth Fernando`}
+  title={`${post.data.title} | Janeth Fernando`}
   description={post.data.excerpt}
   image={post.data.cover}
   type="article"
@@ -37,13 +37,29 @@ const postUrl = `${siteUrl}/${post.slug}/`;
     })}
   />
 
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Writings', item: `${siteUrl}/writings/` },
+        { '@type': 'ListItem', position: 2, name: post.data.title, item: postUrl },
+      ],
+    })}
+  />
+
   <article class="mx-auto max-w-3xl px-6 py-20">
     <!-- Cover -->
     <div class="mb-10 overflow-hidden rounded-2xl bg-gray-100">
       <img
         src={post.data.cover}
         alt={post.data.coverAlt ?? post.data.title}
-        class:list={['h-72 w-full md:h-96', post.data.coverFit === 'contain' ? 'object-contain' : 'object-cover']}
+        class:list={[
+          'h-72 w-full md:h-96',
+          post.data.coverFit === 'contain' ? 'object-contain' : 'object-cover',
+        ]}
       />
     </div>
 

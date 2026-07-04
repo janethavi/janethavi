@@ -80,9 +80,7 @@ const wide = size === 'wide';
 
     <!-- Right: circle photo fills the banner height (or bleeds past it when wide) -->
     <div class="hidden flex-shrink-0 md:block">
-      <div
-        class={`overflow-hidden rounded-full ${wide ? 'h-[400px] w-[400px]' : 'h-64 w-64'}`}
-      >
+      <div class={`overflow-hidden rounded-full ${wide ? 'h-[400px] w-[400px]' : 'h-64 w-64'}`}>
         <img
           src={image}
           alt={imageAlt}

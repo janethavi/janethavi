@@ -1,0 +1,17 @@
+{
+  "name": "Janeth Fernando",
+  "short_name": "Janeth",
+  "description": "Personal site of Janeth Fernando — SRE at WSO2, content creator, and explorer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0d131a",
+  "icons": [
+    {
+      "src": "/images/cropped-bitmoji-20190612081223-1-YD04BnzpqvueRqWY.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
