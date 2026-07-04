@@ -3,7 +3,7 @@
 // (Settings -> Environment variables). Never commit the webhook URL.
 
 export async function onRequestPost({ request, env }) {
-  const back = new URL('/janeth-fernando-about-me', request.url);
+  const back = new URL('/about', request.url);
   back.hash = 'contactme';
 
   let name = '';

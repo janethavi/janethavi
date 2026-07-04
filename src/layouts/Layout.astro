@@ -18,11 +18,11 @@ const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const nav = [
   { label: 'Home', href: '/' },
-  { label: 'About Me', href: '/janeth-fernando-about-me' },
-  { label: 'Gallery', href: '/janeth-fernando-gallery' },
-  { label: 'Writings', href: '/janeth-fernando-writings' },
-  { label: 'Life Updates', href: '/janeth-fernando-life-updates' },
-  { label: 'Experiences', href: '/janeth-fernando-experiences' },
+  { label: 'About Me', href: '/about' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Writings', href: '/writings' },
+  { label: 'Life Updates', href: '/life-updates' },
+  { label: 'Experiences', href: '/experiences' },
 ];
 const currentPath = Astro.url.pathname;
 // Footer Instagram grid: 6 latest posts, statically hosted (no widget, no branding).
@@ -354,7 +354,7 @@ const instagramPosts = [
         <div class="text-center">
           <p class="mb-5 text-2xl font-bold">Ask me anything!</p>
           <a
-            href="/janeth-fernando-about-me#contactme"
+            href="/about#contactme"
             class="inline-block rounded-full bg-periwinkle px-8 py-2.5 text-sm font-semibold text-white transition-colors hover:text-ink"
           >
             Ask Now
