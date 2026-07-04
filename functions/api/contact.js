@@ -1,6 +1,35 @@
 // Cloudflare Pages Function: receives the contact form POST and forwards it
-// to a Discord webhook. Set DISCORD_WEBHOOK_URL in the Pages project settings
-// (Settings -> Environment variables). Never commit the webhook URL.
+// to Discord. Configure ONE of these in the Pages project settings
+// (Settings -> Environment variables, encrypted; never commit them):
+//   - DISCORD_TOKEN + DISCORD_CHANNEL_ID  (bot, same values as the homelab
+//     cloudapp-env secret), or
+//   - DISCORD_WEBHOOK_URL                 (channel webhook)
+
+async function sendToDiscord(env, payload) {
+  if (env.DISCORD_WEBHOOK_URL) {
+    const res = await fetch(env.DISCORD_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    return res.ok;
+  }
+  if (env.DISCORD_TOKEN && env.DISCORD_CHANNEL_ID) {
+    const res = await fetch(
+      `https://discord.com/api/v10/channels/${env.DISCORD_CHANNEL_ID}/messages`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bot ${env.DISCORD_TOKEN}`,
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+    return res.ok;
+  }
+  return false;
+}
 
 export async function onRequestPost({ request, env }) {
   const back = new URL('/about', request.url);
@@ -49,12 +78,7 @@ export async function onRequestPost({ request, env }) {
 
   let ok = false;
   try {
-    const res = await fetch(env.DISCORD_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    ok = res.ok;
+    ok = await sendToDiscord(env, payload);
   } catch {
     ok = false;
   }

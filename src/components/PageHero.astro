@@ -8,6 +8,8 @@ interface Props {
   imagePos?: string;
   /** Zoom factor for the circle photo (1 = no zoom) */
   imageZoom?: number;
+  /** "wide": wider block with a large circle photo that bleeds past the band */
+  size?: 'default' | 'wide';
 }
 const {
   title,
@@ -16,20 +18,24 @@ const {
   imageAlt = 'Janeth Fernando',
   imagePos = 'top',
   imageZoom = 1,
+  size = 'default',
 } = Astro.props;
+const wide = size === 'wide';
 ---
 
 <section class="overflow-hidden bg-gray-950 text-white">
   <div
-    class="mx-auto flex max-w-[820px] flex-col items-center gap-10 px-6 py-10 md:h-64 md:flex-row md:justify-between md:py-0"
+    class={`mx-auto flex ${wide ? 'max-w-[1200px]' : 'max-w-[820px]'} flex-col items-center gap-10 px-6 py-10 md:h-64 md:flex-row md:justify-between md:py-0`}
   >
     <!-- Left: text + social icons (always left-aligned, matching live) -->
     <div class="w-full flex-1 md:w-auto">
-      <h1 class="mb-4 text-4xl font-bold leading-tight md:whitespace-nowrap md:text-5xl">
+      <h1
+        class={`${wide ? 'mb-8' : 'mb-4'} text-4xl font-bold leading-tight md:whitespace-nowrap md:text-5xl`}
+      >
         {title}
       </h1>
-      <p class="mb-8 text-gray-300">{subtitle}</p>
-      <div class="flex items-center gap-12">
+      <p class={`${wide ? 'mb-10' : 'mb-8'} text-gray-300`}>{subtitle}</p>
+      <div class={`flex items-center ${wide ? 'gap-16' : 'gap-12'}`}>
         <a
           href="https://www.linkedin.com/in/janethfernando/"
           target="_blank"
@@ -72,9 +78,11 @@ const {
       </div>
     </div>
 
-    <!-- Right: circle photo fills the banner height -->
+    <!-- Right: circle photo fills the banner height (or bleeds past it when wide) -->
     <div class="hidden flex-shrink-0 md:block">
-      <div class="h-64 w-64 overflow-hidden rounded-full">
+      <div
+        class={`overflow-hidden rounded-full ${wide ? 'h-[400px] w-[400px]' : 'h-64 w-64'}`}
+      >
         <img
           src={image}
           alt={imageAlt}
