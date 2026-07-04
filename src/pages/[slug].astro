@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const siteUrl = 'https://janethfernando.me';
-const postUrl = `${siteUrl}/${post.slug}`;
+const postUrl = `${siteUrl}/${post.slug}/`;
 ---
 
 <Layout
