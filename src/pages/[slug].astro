@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const siteUrl = 'https://janethfernando.me';
+const postUrl = `${siteUrl}/${post.slug}`;
+---
+
+<Layout
+  title={`${post.data.title} — Janeth Fernando`}
+  description={post.data.excerpt}
+  image={post.data.cover}
+  type="article"
+>
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      description: post.data.excerpt,
+      image: `${siteUrl}${post.data.cover}`,
+      url: postUrl,
+      datePublished: post.data.isoDate,
+      author: { '@type': 'Person', name: 'Janeth Fernando', url: siteUrl },
+      publisher: { '@type': 'Person', name: 'Janeth Fernando' },
+      mainEntityOfPage: postUrl,
+      inLanguage: 'en',
+    })}
+  />
+
+  <article class="mx-auto max-w-3xl px-6 py-20">
+    <!-- Cover -->
+    <div class="mb-10 overflow-hidden rounded-2xl bg-gray-100">
+      <img
+        src={post.data.cover}
+        alt={post.data.coverAlt ?? post.data.title}
+        class="h-72 w-full object-cover md:h-96"
+      />
+    </div>
+
+    <!-- Header -->
+    <div class="mb-10">
+      <div class="mb-4 flex items-center gap-3">
+        <span class="text-xs font-semibold uppercase tracking-widest text-gray-500">
+          {post.data.category}
+        </span>
+        <span class="text-gray-300">·</span>
+        <span class="text-sm text-gray-400">{post.data.date}</span>
+        <span class="text-gray-300">·</span>
+        <span class="text-sm text-gray-400">{post.data.readTime}</span>
+      </div>
+      <h1 class="mb-4 text-4xl font-bold leading-tight text-gray-900 md:text-5xl">
+        {post.data.title}
+      </h1>
+      <p class="text-xl leading-relaxed text-gray-500">{post.data.excerpt}</p>
+    </div>
+
+    <!-- Body (Markdown) -->
+    <div class="blog-prose">
+      <Content />
+    </div>
+
+    <!-- Back link -->
+    <div class="mt-16 border-t border-gray-200 pt-8">
+      <a
+        href="/janeth-fernando-writings"
+        class="inline-flex items-center gap-2 font-medium text-periwinkle transition-all hover:gap-3"
+      >
+        <svg class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
+        Back to Writings
+      </a>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const images = [
+  'img_1034-d95gWpp3nRiPeq6P.jpg',
+  'img_1008-mjE98220o2FLgVzL.jpg',
+  'img_0971-A0xVoNNWaxhlwnj8.jpg',
+  'img_0973-AzG7Er4K8Nf1yVOR.jpg',
+  'img_0977-YBg4ylvqkbhRBZlw.JPG',
+  'img_1052-AVLbWJJ3o9sE948p.jpg',
+  'img_1031-A0xVoNNWy6TDnRRQ.jpg',
+  'img_0988-dOq4NlJgnJhgBZ8m.JPG',
+  'img_0985-Yg295LJ1noTELlXg.JPG',
+  'img_1010-YBg4LppyJbHZEjRe.jpg',
+  'img_1028-AQEpV8LjJ4FQx92Q.JPG',
+  'img_1011-YKbrN1K6ggt9M9Bx.JPG',
+];
+---
+
+<Layout
+  title="Sinharaja | Janeth Fernando"
+  description="Sinharaja Rain Forest — a UNESCO World Heritage Site in southwest Sri Lanka."
+>
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    <div class="mb-12 text-center">
+      <h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Sinharaja Forest</h1>
+      <p class="mx-auto max-w-2xl text-lg leading-relaxed text-gray-500">
+        Sinharaja Rain Forest is, a UNESCO World Heritage Site, is famous for its rich biodiversity
+        and numerous endemic species.
+      </p>
+    </div>
+    <div class="columns-2 gap-4 space-y-4 md:columns-3">
+      {
+        images.map((img) => (
+          <img
+            src={`/images/gallery/sinharaja/${img}`}
+            alt="Sinharaja Forest Reserve"
+            class="w-full rounded-xl"
+            loading="lazy"
+          />
+        ))
+      }
+    </div>
+  </div>
+</Layout>

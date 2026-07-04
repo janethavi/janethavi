@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const albums = [
+  {
+    title: 'Sinharaja Forest Reserve',
+    href: '/sinharaja',
+    description:
+      'The Sinharaja Rain Forest in southwest Sri Lanka is a UNESCO World Heritage Site, renowned for its rich biodiversity and many endemic species.',
+    photos: [
+      {
+        src: '/images/gallery/sinharaja/img_1010-YBg4LppyJbHZEjRe.jpg',
+        alt: 'Wildlife in Sinharaja Forest',
+      },
+      {
+        src: '/images/gallery/sinharaja/img_0971-A0xVoNNWaxhlwnj8.jpg',
+        alt: 'Sinharaja Forest Reserve',
+      },
+    ],
+  },
+  {
+    title: 'Bundala National Park',
+    href: '/bundala',
+    description:
+      "Bundala National Park in southeast Sri Lanka is a UNESCO Biosphere Reserve. It's famous for its diverse ecosystems and rich bird life, including many migratory species.",
+    photos: [
+      {
+        src: '/images/gallery/bundala/img_2323-mk3958Za4ZuypKNR.JPG',
+        alt: 'Bird life at Bundala National Park',
+      },
+      {
+        src: '/images/gallery/bundala/img_1830-mk3958rQV2CDMP35.JPG',
+        alt: 'Wildlife at Bundala',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Gallery | Janeth Fernando"
+  description="Beautiful captures through my lens — photography from Sri Lanka and beyond."
+>
+  <PageHero
+    title="Through my lens"
+    subtitle="Beautiful captures from my lens.."
+    image="/images/gallery/12799117_1044667288931092_2813236290562050512_n-dJo4EJeP8RTKpXa5.jpg"
+  />
+
+  {
+    albums.map((album) => (
+      <section class="px-6 py-14">
+        <div class="mx-auto max-w-5xl">
+          <div class="mb-12 text-center">
+            <h2 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">{album.title}</h2>
+            <p class="mx-auto max-w-2xl text-lg leading-relaxed text-gray-500">
+              {album.description}
+            </p>
+          </div>
+
+          <div class="mb-6 grid grid-cols-2 gap-4">
+            {album.photos.map((photo) => (
+              <div class="overflow-hidden rounded-2xl">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  class="h-80 w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div class="flex justify-end">
+            <a
+              href={album.href}
+              class="inline-block rounded-full bg-periwinkle px-8 py-3 font-semibold text-white transition-colors hover:text-ink"
+            >
+              View More
+            </a>
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</Layout>

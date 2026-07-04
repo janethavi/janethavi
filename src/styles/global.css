@@ -1,0 +1,45 @@
+/* Site-wide custom CSS (kept external per project preference). Utility styling
+   lives in Tailwind classes; only bespoke rules go here. */
+
+/* Entrance animation like the original site's "slide" effect. The classes are
+   added by JS, so content stays visible without JS (and for crawlers). */
+@media (prefers-reduced-motion: no-preference) {
+  .anim-pre {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+  .anim-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Blog article body (rendered from Markdown) */
+.blog-prose {
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.625;
+}
+.blog-prose p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.blog-prose h2 {
+  margin: 2.5rem 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+.blog-prose a {
+  color: #89b0f5;
+  text-decoration: underline;
+}
+.blog-prose a:hover {
+  text-decoration: none;
+}
+.blog-prose img {
+  border-radius: 0.75rem;
+}

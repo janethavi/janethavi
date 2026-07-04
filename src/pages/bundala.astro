@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const images = [
+  'img_2466-YrDNLoaVz1Fnkbx2.jpg',
+  'img_2461-mePnG570PDijb294.JPG',
+  'img_1787-m2WQrBwPVBf07PKg.JPG',
+  'img_2623-A854r2WLJ8UZoaQ0.JPG',
+  'img_2488-dJo4Ne9Ee1h9zwXb.JPG',
+  'img_2354-mk3958ZaNJf49NX0.JPG',
+  'img_2033-YD04vD7OrxC4LnRw.JPG',
+  'img_1820-Yg295LrJP9uJ1xw5.JPG',
+  'img_2541-AoPGNZ9aQXi4bnDl.JPG',
+  'img_2517-ALpobB4DEpt2eB3A.JPG',
+  'img_2409-AwvkPjV7JWSG1Vey.JPG',
+  'img_2185-YrDNX1xjapc8nM9W.JPG',
+  'img_1830-mk3958rQV2CDMP35.JPG',
+  'img_2630-m7VKk86xOKF3WyeM.JPG',
+  'img_2499-YbN9ynRO3LfajEzg.JPG',
+  'img_2323-mk3958Za4ZuypKNR.JPG',
+  'img_2234-Yan9zMeE1xi7W8o2.JPG',
+];
+---
+
+<Layout
+  title="Bundala | Janeth Fernando"
+  description="Bundala National Park — a UNESCO Biosphere Reserve in southeast Sri Lanka."
+>
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    <div class="mb-12 text-center">
+      <h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Bundala Park</h1>
+      <p class="mx-auto max-w-2xl text-lg leading-relaxed text-gray-500">
+        Bundala is famous for its diverse ecosystems and rich bird life, including many migratory
+        species.
+      </p>
+    </div>
+    <div class="columns-2 gap-4 space-y-4 md:columns-3">
+      {
+        images.map((img) => (
+          <img
+            src={`/images/gallery/bundala/${img}`}
+            alt="Bundala National Park"
+            class="w-full rounded-xl"
+            loading="lazy"
+          />
+        ))
+      }
+    </div>
+  </div>
+</Layout>

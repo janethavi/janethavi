@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects: old replica slugs -> live-site slugs
+/about              /janeth-fernando-about-me       301
+/gallery            /janeth-fernando-gallery        301
+/writings           /janeth-fernando-writings       301
+/life-updates       /janeth-fernando-life-updates   301
+/experiences        /janeth-fernando-experiences    301
+/gallery/sinharaja  /sinharaja                      301
+/gallery/bundala    /bundala                        301

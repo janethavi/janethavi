@@ -1,0 +1,215 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const chapters = [
+  {
+    title: 'Early Days',
+    image: '/images/about/picture-245-mePnkQXyQWI1wbr0.jpg',
+    text: `My passion for computers was ignited by my father, who introduced me to the fascinating world of technology at a very young age. I still vividly remember the day when my father brought home a formidable computer, which I affectionately referred to as the "big computer." This machine had a CRT monitor of considerable size, requiring significant strength to lift. The system unit was a horizontal one and served as the base for the monitor.
+
+Loaded with Windows 98, the computer also had a floppy disk reader/writer, which my father called a "Disket drive." Those early days were filled with hours of gaming enjoyment, with Pinball being one of my favorite pastimes on that computer.
+
+After a few years, for the purpose of checking emails, my father installed a modem on the computer. He used to call this connection the "WoW connection." However, he didn't let me use the modem as it increased our telephone bill. So, once his work was done, he would disconnect the modem and hide it somewhere else.
+
+My father enrolled me in a computer class, and every Saturday morning, I eagerly attended these sessions. This class provided me with a wonderful opportunity to delve deeper into the world of computers and expand my knowledge. My grandfather played a pivotal role in this journey, faithfully taking me to the class by bus and then dropping me back home. These experiences not only fueled my passion for technology but also taught me the value of learning and the importance of family support.`,
+  },
+  {
+    title: 'Schooling',
+    image: '/images/about/11139992_859552077507682_179559531177845833_n-Aq2oybyLwXs2rR4D.jpg',
+    text: `During my academic years at school, I actively participated in the ICT society, where I engaged in numerous volunteering initiatives. Within the society, we were responsible for maintaining the college website, facilitating live-streaming of college events, and even developing a specialized app for checking live scores during the "big match." These experiences not only enriched my technical skills but also enabled me to interact and collaborate with like-minded individuals who shared a passion for technology.
+
+By attending IT days at other schools, I expanded my horizons and networked with fellow enthusiasts, leading to the growth of a diverse and extensive tech circle. These interactions exposed me to innovative ideas and emerging trends in the field of information and communication technology.`,
+  },
+  {
+    title: 'University Life',
+    image: '/images/about/57200773_2456730997767493_1257414579995017216_n-1-Aq2oyb0eb5IeXlOO.webp',
+    text: `After completing my A/Ls, I pursued my passion for technology by enrolling in an IT-related degree program. This journey opened up a world of opportunities, providing me with a solid foundation in information technology. I eagerly participated in hackathons, competitions, workshops, and exhibitions, embracing every chance to expand my knowledge and skills.
+
+At university, I learned various new technologies and gained insight into how the software engineering industry works. Alongside a group of friends, I embarked on freelancing projects, delivering successful outcomes and building a robust portfolio. You can check out our website to explore the projects we've completed.
+
+Additionally, we shared our expertise through our YouTube channel, offering tutorials, project showcases, and discussions on the latest tech trends. The positive feedback from viewers further fueled our passion for technology and education.
+
+This period of exploration and collaboration has been immensely fulfilling, laying the foundation for my ongoing pursuit of excellence in the tech field. The combination of academic learning, hands-on experience, and community engagement has equipped me with a well-rounded skill set and a deep-seated drive to continue growing in the ever-evolving world.`,
+  },
+  {
+    title: 'Internship',
+    image: '/images/about/img_3515.png',
+    text: `I had the incredible opportunity to undertake a one-year internship at WSO2, which proved to be a transformative experience. Working at WSO2 exposed me to a diverse array of new technologies, particularly AWS cloud services and DevOps practices.
+
+Prior to my internship, I had not encountered these technologies during my university studies. However, the immersive learning environment at WSO2 allowed me to quickly grasp and apply these technologies in real-world scenarios. The exposure to AWS cloud services provided invaluable insights into cloud computing, scalability, and infrastructure management, while the DevOps practices introduced me to the seamless integration of development and operations workflows.
+
+This internship not only enhanced my technical skills but also broadened my understanding of industry standards and practices, making it a pivotal point in my professional development.`,
+  },
+  {
+    title: 'Work Life',
+    image: '/images/about/img_1159.jpg',
+    text: `After completing four years of rigorous study at university, I made a pivotal decision to rejoin WSO2, this time as a Site Reliability Engineer (SRE), aligning my career more closely with cloud environments. This momentous step has proved immensely rewarding. As an SRE, I have extensively worked with technologies such as Kubernetes and Azure, which have become the cornerstone of my professional journey.
+
+My tenure at WSO2 has been marked by continuous growth and progression. Over time, I have evolved into an Associate Lead - Site Reliability Engineer, assuming greater responsibilities and contributing significantly to the organization's success. Working with Kubernetes has provided me with a deep understanding of container orchestration, scalability, and reliability, while Azure has offered a powerful platform to build and deploy cloud-based solutions.
+
+This is where I am at the moment. Looking back, I have come a long way on this exciting journey. From my early fascination with computers sparked by my father's "big computer" to landing as a Site Reliability Engineer, the path has been filled with growth and valuable experiences. I am grateful for the opportunities that have come my way and excited about future prospects in the ever-evolving tech world. The road ahead holds many more possibilities to explore, innovate, and contribute to the expanding world of technology.`,
+  },
+];
+---
+
+<Layout
+  title="About Me | Janeth Fernando"
+  description="Sharing my story from the beginning — from a Windows 98 computer to SRE at WSO2."
+>
+  <PageHero
+    title="It's all about me"
+    subtitle="Sharing my story from the beginning.."
+    image="/images/about/img_0293-mp89GbB4bLUqMVMD.JPG"
+    imagePos="50% 22%"
+    imageZoom={1.25}
+  />
+
+  <!-- Content -->
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <div class="space-y-16">
+      {
+        chapters.map((ch, i) => (
+          <div
+            class={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-start gap-12`}
+          >
+            {ch.image && (
+              <div class="w-full flex-shrink-0 md:w-[480px]">
+                <img
+                  src={ch.image}
+                  alt={ch.title}
+                  class="h-72 w-full rounded-lg object-cover md:h-[580px]"
+                />
+              </div>
+            )}
+            <div class="flex-1">
+              <h2 class="mb-5 text-4xl font-bold text-gray-900">{ch.title} ...</h2>
+              <div class="space-y-4 text-justify text-lg leading-relaxed text-gray-700">
+                {ch.text.split('\n\n').map((p) => (
+                  <p>{p}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Credly CTA -->
+  <section class="px-6 py-14">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-10 md:flex-row">
+      <div class="flex-1 text-center">
+        <h2 class="mx-auto mb-8 max-w-[820px] text-3xl font-bold text-gray-900 md:text-4xl">
+          Checkout Credly for my professional qualifications
+        </h2>
+        <a
+          href="https://www.credly.com/users/janeth-fernando"
+          target="_blank"
+          rel="noopener"
+          class="inline-block rounded-full bg-periwinkle px-8 py-3 font-semibold text-white transition-colors hover:text-ink"
+        >
+          Visit Credly!
+        </a>
+      </div>
+      <div class="flex-shrink-0">
+        <img
+          src="/images/about/img_6307-AVLbW9zQZOirnOva.jpg"
+          alt="Janeth Fernando graduation"
+          class="h-56 w-56 rounded-full object-cover object-top md:h-64 md:w-64"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact form -->
+  <section id="contactme" class="bg-white px-6 py-14">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Get in touch with me</h2>
+        <p class="text-gray-500">
+          I would love to hear from you. Drop a message I will surely catch up!
+        </p>
+      </div>
+      <!-- Form card overlaps the photo: photo sits behind, offset down-right -->
+      <div class="relative md:pb-16">
+        <div class="relative z-10 rounded-3xl bg-gray-100 p-8 md:w-[68%]">
+          <form class="space-y-5" action="/api/contact" method="POST">
+            <!-- Honeypot: hidden from humans, bots fill it -->
+            <input
+              type="text"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+              class="hidden"
+            />
+            <div>
+              <label class="mb-2 block text-sm font-medium text-gray-700">Name*</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Let me know your name"
+                required
+                class="w-full rounded-xl border-0 bg-white px-5 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-periwinkle"
+              />
+            </div>
+            <div>
+              <label class="mb-2 block text-sm font-medium text-gray-700">Email*</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Let me know your email address"
+                required
+                class="w-full rounded-xl border-0 bg-white px-5 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-periwinkle"
+              />
+            </div>
+            <div>
+              <label class="mb-2 block text-sm font-medium text-gray-700">Message*</label>
+              <textarea
+                name="message"
+                placeholder="Let me hear from you"
+                rows="5"
+                required
+                class="w-full resize-none rounded-xl border-0 bg-white px-5 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-periwinkle"
+              ></textarea>
+            </div>
+            <div class="flex justify-center">
+              <button
+                type="submit"
+                class="rounded-full bg-periwinkle px-12 py-3 text-sm font-semibold text-white transition-colors hover:text-ink"
+              >
+                Submit
+              </button>
+            </div>
+            <p id="form-status" class="hidden text-center text-sm font-medium"></p>
+          </form>
+        </div>
+        <!-- Photo behind the card, extending below it -->
+        <div class="absolute bottom-0 right-0 top-16 hidden w-[52%] md:block">
+          <img
+            src="/images/about/img_7553.jpg"
+            alt="Janeth Fernando"
+            class="h-full w-full rounded-3xl object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Show the contact form result after the /api/contact redirect (?sent=1|0)
+    const sent = new URLSearchParams(window.location.search).get('sent');
+    const status = document.getElementById('form-status');
+    if (sent && status) {
+      status.textContent =
+        sent === '1'
+          ? "Thanks for reaching out! I'll get back to you soon."
+          : 'Something went wrong sending your message. Please try again in a moment.';
+      status.classList.remove('hidden');
+      status.classList.add(sent === '1' ? 'text-green-600' : 'text-red-500');
+    }
+  </script>
+</Layout>

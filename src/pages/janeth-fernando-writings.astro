@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title="Writings | Janeth Fernando"
+  description="Written moments — unforgettable stories, adventures, and thoughts."
+>
+  <PageHero
+    title="Written moments"
+    subtitle="Unforgettable moments as writings.."
+    image="/images/experiences/453653815_909414961230291_7586902564559473890_n-m2WQ8nl9bysyjWz4.jpg"
+    imagePos="22% 43%"
+    imageZoom={1.6}
+  />
+
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <!-- Blog posts -->
+    <div class="mb-20 grid gap-x-8 gap-y-14 md:grid-cols-3">
+      {
+        posts.map((post) => (
+          <a href={`/${post.slug}`} class="group block">
+            <div class="mb-6 aspect-[16/10] overflow-hidden rounded-md bg-gray-100">
+              <img
+                src={post.data.cover}
+                alt={post.data.title}
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <p class="mb-3 text-sm uppercase tracking-wider text-gray-500">{post.data.category}</p>
+            <h2 class="mb-3 text-2xl font-bold text-gray-900">{post.data.title}</h2>
+            <p class="mb-4 leading-relaxed text-gray-600">{post.data.excerpt}</p>
+            <p class="text-gray-700">Janeth Fernando</p>
+            <p class="text-gray-500">
+              {post.data.date} · {post.data.readTime}
+            </p>
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Medium link -->
+    <div class="flex flex-col items-center justify-between gap-10 pb-8 md:flex-row">
+      <div class="flex-1 text-center">
+        <h2 class="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
+          Technical blogs can be found on Medium
+        </h2>
+        <a
+          href="https://medium.com/@janethavishka"
+          target="_blank"
+          rel="noopener"
+          class="inline-block rounded-full bg-periwinkle px-8 py-3 font-semibold text-white transition-colors hover:text-ink"
+        >
+          Visit Medium!
+        </a>
+      </div>
+      <div class="flex-shrink-0">
+        <img
+          src="/images/experiences/medium-logo-d95grMx0WqHXK0M7.png"
+          alt="Medium"
+          class="h-28 w-28 object-contain md:h-36 md:w-36"
+        />
+      </div>
+    </div>
+  </div>
+</Layout>

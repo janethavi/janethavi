@@ -1,0 +1,334 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const blobs = [
+  {
+    src: '/images/home/img_4294-AoPGnkDejyIZrkRo.jpg',
+    alt: 'Launching a drone',
+    radius: '62% 38% 46% 54% / 60% 44% 56% 40%',
+  },
+  {
+    src: '/images/home/img_6600-m2WQo64g3PIKX8NK.JPG',
+    alt: 'Hiking in pine forests',
+    radius: '44% 56% 58% 42% / 48% 62% 38% 52%',
+  },
+  {
+    src: '/images/home/img_1813-ALpo0JG1oDTn1vMa.jpg',
+    alt: 'Outdoor adventures',
+    radius: '54% 46% 38% 62% / 52% 58% 42% 48%',
+  },
+  {
+    src: '/images/home/img_5180-YZ9bW4aoR3h566g5.jpg',
+    alt: 'Outdoors adventures',
+    radius: '48% 52% 60% 40% / 56% 40% 60% 44%',
+  },
+  {
+    src: '/images/home/img_3791-YbN9OaOwg0CvneNW.JPG',
+    alt: 'At events',
+    radius: '40% 60% 50% 50% / 44% 56% 44% 56%',
+  },
+  {
+    src: '/images/home/640af763-2dff-433b-839e-f96e1e3400a2-mp89e0JX4lhR4QBb.jpg',
+    alt: 'Go karting',
+    radius: '56% 44% 52% 48% / 42% 60% 40% 58%',
+  },
+  {
+    src: '/images/home/img_0969-AQEpQMq5zRUwNE13.JPG',
+    alt: 'Photography',
+    radius: '46% 54% 44% 56% / 58% 42% 58% 42%',
+  },
+  {
+    src: '/images/home/img_0219-YbN9OaNbLjHlO6oZ.JPG',
+    alt: 'Burj Khalifa Dubai',
+    radius: '60% 40% 48% 52% / 50% 54% 46% 50%',
+  },
+  {
+    src: '/images/home/img_1210-d95gWpoPW7hPJ4Vz.JPG',
+    alt: 'Desert dunes adventure',
+    radius: '52% 48% 56% 44% / 46% 62% 38% 54%',
+  },
+];
+---
+
+<Layout
+  title="Janeth Fernando — SRE, Content Creator & Explorer"
+  description="Hi, I'm Janeth Fernando — Associate Lead SRE at WSO2, content creator, and adventure seeker from Sri Lanka. Building a better future through technology."
+>
+  <!-- Hero — dark, photo collage right (collage bleeds to banner edges like live) -->
+  <section class="bg-gray-950 text-white">
+    <div
+      class="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-6 py-16 md:h-[575px] md:flex-row md:py-0"
+    >
+      <!-- Left text -->
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="mb-8 text-center text-5xl font-bold leading-tight md:text-6xl">
+          Hey, I am<br />Janeth!
+        </h1>
+        <p class="mx-auto mb-10 max-w-lg text-base leading-relaxed text-gray-200 md:mx-0">
+          Building a better future through technology, fueled by ambition and a relentless drive in
+          the cloud.
+        </p>
+        <div class="flex flex-col items-center gap-6 sm:flex-row">
+          <a
+            href="/janeth-fernando-about-me"
+            class="inline-block rounded-full bg-periwinkle px-10 py-4 text-base font-semibold text-white transition-colors hover:text-ink"
+          >
+            Explore Me!
+          </a>
+          <div class="flex items-center gap-5">
+            <a
+              href="https://www.linkedin.com/in/janethfernando/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+              class="text-gray-400 transition-colors hover:text-white"
+            >
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
+                ><path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                ></path></svg
+              >
+            </a>
+            <a
+              href="https://www.instagram.com/_jan.eth_/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              class="text-gray-400 transition-colors hover:text-white"
+            >
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
+                ><path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                ></path></svg
+              >
+            </a>
+            <a
+              href="https://www.youtube.com/@DaysofJaneth"
+              target="_blank"
+              rel="noopener"
+              aria-label="YouTube"
+              class="text-gray-400 transition-colors hover:text-white"
+            >
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
+                ><path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                ></path></svg
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right photo collage: inset from top, flush at banner bottom (like live) -->
+      <div class="hidden h-full flex-shrink-0 gap-2 pt-4 md:flex">
+        <!-- Large main photo -->
+        <div class="h-full w-[408px] overflow-hidden rounded-xl">
+          <img
+            src="/images/home/img_5388-AE04XWboOWcrbvxP.JPG"
+            alt="Janeth Fernando"
+            class="h-full w-full object-cover object-top"
+          />
+        </div>
+        <!-- Two stacked photos -->
+        <div class="flex h-full flex-col gap-2">
+          <div class="w-[195px] flex-1 overflow-hidden rounded-xl">
+            <img
+              src="/images/experiences/dsc_0237-YD04noVazLu4WvKy.jpg"
+              alt="Speaking at IndustPro"
+              class="h-full w-full object-cover object-top"
+            />
+          </div>
+          <div class="w-[195px] flex-1 overflow-hidden rounded-xl">
+            <img
+              src="/images/home/img_6674-YX4bwVRllrczeK2V.JPG"
+              alt="Adventures in nature"
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile: single hero photo -->
+      <div class="h-72 w-full overflow-hidden rounded-2xl md:hidden">
+        <img
+          src="/images/home/img_5388-AE04XWboOWcrbvxP.JPG"
+          alt="Janeth Fernando"
+          class="h-full w-full object-cover object-top"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- My Experiences preview -->
+  <section class="px-6 py-14">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">My Experiences</h2>
+        <p class="mx-auto max-w-md text-lg text-gray-500">
+          Uncover the moments that shaped my journey. Have a peek!
+        </p>
+      </div>
+
+      <div class="mb-12 grid gap-8 md:grid-cols-2">
+        <div>
+          <div class="mb-4 overflow-hidden rounded-2xl">
+            <img
+              src="/images/experiences/441600297_966651385462149_6641912041600370516_n-YBg4M26w2OcXJxga.jpg"
+              alt="IndustPro 3.0 Speaker"
+              class="h-64 w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="mb-2 text-2xl font-bold text-gray-900">IndustPro 3.0 Speaker</h3>
+          <p class="leading-relaxed text-gray-500">
+            Guided over 120 university students through a hands-on workshop on GitHub.
+          </p>
+        </div>
+        <div>
+          <div class="mb-4 overflow-hidden rounded-2xl">
+            <img
+              src="/images/experiences/untitled-design-MzVLnaPdbrajHvqe.png"
+              alt="Content Creator on YouTube"
+              class="h-64 w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="mb-2 text-2xl font-bold text-gray-900">Content Creator on YouTube</h3>
+          <p class="leading-relaxed text-gray-500">
+            Creator of "Days of Janeth" and "Tech with Janeth" YouTube channel.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a
+          href="/janeth-fernando-experiences"
+          class="inline-block rounded-full bg-periwinkle px-8 py-3 font-semibold text-white transition-colors hover:text-ink"
+        >
+          See More!
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What else I do — blob photo section -->
+  <section class="overflow-hidden bg-white px-6 py-12">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="mb-10 text-4xl font-bold text-gray-900 md:text-6xl">What else I do?</h2>
+
+      <!-- Desktop blob layout (positions scaled from the live site) -->
+      <div class="relative hidden md:block" style="height: 510px;">
+        <!-- Top row: drone, hiking, museum, tree -->
+        <div class="absolute" style="left:0; top:65px; width:229px; height:138px;">
+          <img
+            src={blobs[0].src}
+            alt={blobs[0].alt}
+            class="h-full w-full object-cover"
+            style={`border-radius: ${blobs[0].radius}`}
+            loading="lazy"
+          />
+        </div>
+        <div class="absolute" style="left:272px; top:69px; width:211px; height:138px;">
+          <img
+            src={blobs[1].src}
+            alt={blobs[1].alt}
+            class="h-full w-full object-cover"
+            style={`border-radius: ${blobs[1].radius}`}
+            loading="lazy"
+          />
+        </div>
+        <div class="absolute" style="left:505px; top:40px; width:236px; height:160px;">
+          <img
+            src={blobs[2].src}
+            alt={blobs[2].alt}
+            class="h-full w-full object-cover"
+            style={`border-radius: ${blobs[2].radius}`}
+            loading="lazy"
+          />
+        </div>
+        <div class="absolute" style="left:759px; top:0; width:229px; height:163px;">
+          <img
+            src={blobs[3].src}
+            alt={blobs[3].alt}
+            class="h-full w-full object-cover"
+            style={`border-radius: ${blobs[3].radius}`}
+            loading="lazy"
+          />
+        </div>
+        <!-- Far right: event photo sits between the two rows -->
+        <div class="absolute" style="right:0; top:156px; width:203px; height:152px;">
+          <img
+            src={blobs[4].src}
+            alt={blobs[4].alt}
+            class="h-full w-full object-cover"
+            style={`border-radius: ${blobs[4].radius}`}
+            loading="lazy"
+          />
+        </div>
+        <!-- Quote text: center-right, between event blob and bottom row -->
+        <div class="absolute text-center" style="left:390px; top:200px; width:420px;">
+          <p class="text-2xl leading-snug text-gray-800">
+            "I'M A <span class="text-periwinkle">STORYTELLER</span> OF MOMENTS, A <span
+              class="text-periwinkle">CURATOR</span
+            > OF ADVENTURES, AND A <span class="text-periwinkle">SEEKER</span> OF NEW EXPERIENCES."
+          </p>
+        </div>
+        <!-- Middle left: gokart. Bottom row: camera, burj, dunes -->
+        <div class="absolute" style="left:65px; top:229px; width:225px; height:160px;">
+          <img
+            src={blobs[5].src}
+            alt={blobs[5].alt}
+            class="h-full w-full object-cover"
+            style={`border-radius: ${blobs[5].radius}`}
+            loading="lazy"
+          />
+        </div>
+        <div class="absolute" style="left:305px; top:356px; width:196px; height:149px;">
+          <img
+            src={blobs[6].src}
+            alt={blobs[6].alt}
+            class="h-full w-full object-cover"
+            style={`border-radius: ${blobs[6].radius}`}
+            loading="lazy"
+          />
+        </div>
+        <div class="absolute" style="left:555px; top:348px; width:232px; height:152px;">
+          <img
+            src={blobs[7].src}
+            alt={blobs[7].alt}
+            class="h-full w-full object-cover"
+            style={`border-radius: ${blobs[7].radius}`}
+            loading="lazy"
+          />
+        </div>
+        <div class="absolute" style="left:806px; top:305px; width:240px; height:174px;">
+          <img
+            src={blobs[8].src}
+            alt={blobs[8].alt}
+            class="h-full w-full object-cover"
+            style={`border-radius: ${blobs[8].radius}`}
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Mobile -->
+      <div class="md:hidden">
+        <blockquote class="mb-10 text-center text-2xl leading-snug text-gray-800">
+          "I'M A <span class="text-periwinkle">STORYTELLER</span> OF MOMENTS, A <span
+            class="text-periwinkle">CURATOR</span
+          > OF ADVENTURES, AND A <span class="text-periwinkle">SEEKER</span> OF NEW EXPERIENCES."
+        </blockquote>
+        <div class="grid grid-cols-3 gap-3">
+          {
+            blobs.map((b) => (
+              <div class="aspect-square overflow-hidden" style={`border-radius: ${b.radius}`}>
+                <img src={b.src} alt={b.alt} class="h-full w-full object-cover" loading="lazy" />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

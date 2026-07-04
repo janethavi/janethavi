@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const experiences = [
+  {
+    title: 'IndustPro 3.0 speaker',
+    image:
+      '/images/experiences/441600297_966651385462149_6641912041600370516_n-YBg4M26w2OcXJxga.jpg',
+    html: `<p class="text-justify text-lg leading-relaxed text-gray-700 mb-4">The IEEE of the Informatics Institute of Technology organized a series of sessions under the "<span class="text-periwinkle font-semibold">IndustPro3.0</span>" theme, and I had the incredible opportunity to speak and conduct a practical workshop on "Open Source Contributions."</p><p class="text-justify text-lg leading-relaxed text-gray-700">Guiding over <span class="text-periwinkle font-semibold">120</span> enthusiastic undergraduate students through a hands-on workshop on using GitHub and getting started with open source contributions was an enriching experience. The workshop covered essential GitHub functionalities, including creating repositories, forking repositories, committing work, pushing commits, opening pull requests, reviewing pull requests, and merging pull requests.</p>`,
+  },
+  {
+    title: 'Content creator for YouTube',
+    image: '/images/experiences/untitled-design-MzVLnaPdbrajHvqe.png',
+    html: `<p class="text-justify text-lg leading-relaxed text-gray-700 mb-4">My content creation journey spans <span class="text-periwinkle font-semibold">two unique</span> Youtube channels. On <a href="https://www.youtube.com/@DaysofJaneth" target="_blank" rel="noopener" class="text-periwinkle underline hover:no-underline">Days of Janeth</a>, I document my personal life and travels through vlogs. Meanwhile, <a href="https://www.youtube.com/@TechWithJaneth" target="_blank" rel="noopener" class="text-periwinkle underline hover:no-underline">Tech with Janeth</a> serves as my professional outlet, where I share software engineering insights, tutorials, and discussions on the latest industry trends.</p><p class="text-justify text-lg leading-relaxed text-gray-700">This dual approach allows me to engage with my audience on both a personal and professional level.</p>`,
+  },
+  {
+    title: 'Judge at Golden Doily culinary event',
+    image:
+      '/images/experiences/453653815_909414961230291_7586902564559473890_n-m2WQ8nl9bysyjWz4.jpg',
+    html: `<p class="text-justify text-lg leading-relaxed text-gray-700 mb-4">I had the honor of serving as a <span class="text-periwinkle font-semibold">judge</span> at the Golden Doily culinary event organized by <a href="https://pereraandsons.com/" target="_blank" rel="noopener" class="text-periwinkle underline hover:no-underline">Perera &amp; Sons Bakers (Pvt) Ltd</a>. This was a new and exhilarating experience for me.</p><p class="text-justify text-lg leading-relaxed text-gray-700">From unique food ideas to stunning presentations, each dish showcased the incredible talent and dedication of the contestants. Scoring them based on taste and presentation was a privilege and a delightful challenge.</p>`,
+  },
+  {
+    title: 'Evaluate final year research projects at university',
+    image: '/images/experiences/untitled-design-mxB7jv8eQDC7jryW.png',
+    imageFit: 'contain',
+    html: `<p class="text-justify text-lg leading-relaxed text-gray-700">The final-year students at <span class="text-periwinkle font-semibold">IIT</span> have to follow a year-long research module. As a research project marker at IIT, I am involved in providing comprehensive feedback on their projects. My role includes assessing the quality of their research, evaluating their methodologies, and offering constructive feedback to help them improve their work. This process ensures that students meet the academic standards required for their projects and helps them develop their research skills further.</p>`,
+  },
+  {
+    title: 'Webmaster at Sustainable Education Foundation',
+    image: '/images/experiences/screenshot-from-2024-07-20-15-29-29-Yyv7EZVD0ZTBW197.png',
+    html: `<p class="text-justify text-lg leading-relaxed text-gray-700 mb-4">Sustainable Education Foundation (<a href="https://sefglobal.org/" target="_blank" rel="noopener" class="text-periwinkle underline hover:no-underline">SEF</a>) is a volunteer-driven organisation founded by the former Google Student Ambassador and alumni of University of Moratuwa, Akshika Wijesundara. I voluntarily contributed to SEF mostly by developing the official website of SEF Organization in 2020.</p><p class="text-justify text-lg leading-relaxed text-gray-700">Afterwards for another year I lead the web development team as the <span class="font-semibold">webmaster</span> at SEF.</p>`,
+  },
+  {
+    title: 'Co-Founder of codeJunction',
+    image: '/images/experiences/teampic1-AVLbWZE7r6C8P5lV.jpg',
+    html: `<p class="text-justify text-lg leading-relaxed text-gray-700 mb-4"><a href="https://codejunctionteam.github.io/codeJunction-site/#/home" target="_blank" rel="noopener" class="text-periwinkle underline hover:no-underline">codeJunction</a> is a <span class="text-periwinkle font-semibold">startup</span> that specializes in IT-related projects, including websites and small business applications. Founded with a team of four, we combine our expertise to deliver high-quality solutions.</p><p class="text-justify text-lg leading-relaxed text-gray-700">In addition to our project work, we maintain a <a href="https://www.youtube.com/@codeJunction" target="_blank" rel="noopener" class="text-periwinkle underline hover:no-underline">YouTube channel</a> where we share our knowledge and insights with a global audience. This platform allows us to connect with others, provide valuable content, and showcase our expertise in the IT field.</p>`,
+  },
+  {
+    title: 'Active local guide',
+    image: '/images/experiences/screenshot-from-2024-07-20-23-03-28-m6LJqXV4DxIbMEjr.png',
+    imageFit: 'contain',
+    html: `<p class="text-justify text-lg leading-relaxed text-gray-700">As a dedicated local guide, I contribute to the community by sharing reviews, photos, and insights about local places. Currently, I am a <span class="text-periwinkle font-semibold">Level 7</span> local guide, with my contributions amassing over <span class="text-periwinkle font-semibold">1 million views</span>. This role allows me to help others discover and explore new locations, while also enhancing the visibility and reputation of local businesses.</p>`,
+  },
+  {
+    title: 'Live-streaming Royal Thomian big match',
+    image:
+      '/images/experiences/12828404_781053085360434_4130833010665747788_o-ALpoBxvoqMhM7J5O.jpg',
+    html: `<p class="text-justify text-lg leading-relaxed text-gray-700">Starting in 2015, the <span class="text-periwinkle font-semibold">ICT society of S. Thomas' College Mount Lavinia</span> took the initiative to live stream the majority of college events. I played a significant role where I contributed to every aspect of the process. My responsibilities included setting up recording equipment, managing live streams, troubleshooting technical issues, and ensuring high-quality broadcasts. This experience allowed me to develop a strong understanding of the technical and logistical challenges involved in live streaming events.</p>`,
+  },
+];
+---
+
+<Layout
+  title="Experiences — Janeth Fernando"
+  description="Great experiences in my life — from speaking at IEEE events to judging culinary competitions and working as an SRE at WSO2."
+  image="/images/experiences/dsc_0237-portrait.jpg"
+>
+  <PageHero
+    title="Experiences"
+    subtitle="Great experiences in my life.."
+    image="/images/experiences/dsc_0237-portrait.jpg"
+    imagePos="59% 66%"
+    imageZoom={1.8}
+  />
+
+  <!-- Experience items: image left, text right (matches live site) -->
+  <div class="mx-auto max-w-[1200px] space-y-16 px-6 py-14">
+    {
+      experiences.map((exp) => (
+        <article class="flex flex-col items-start gap-6 md:flex-row">
+          <div class="w-full flex-shrink-0 md:w-[560px]">
+            <img
+              src={exp.image}
+              alt={exp.title}
+              class={`h-72 w-full rounded-lg md:h-[360px] ${exp.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+              loading="lazy"
+            />
+          </div>
+          <div class="flex-1 pt-2">
+            <h2 class="mb-5 text-2xl font-bold text-gray-900 md:text-3xl">{exp.title}</h2>
+            <Fragment set:html={exp.html} />
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</Layout>

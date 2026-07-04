@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<Layout
+  title="Life Updates | Janeth Fernando"
+  description="Life between the lines — updates, moments, and stories from my life."
+>
+  <PageHero
+    title="Life updates"
+    subtitle="Life between the lines..."
+    image="/images/life-updates/img_4048-YBgb396931SB2jrz.jpg"
+  />
+
+  <!-- X (Twitter) feed widget (inline embed auto-sizes, so only the window
+       scrolls). Don't add other SociableKIT widget scripts on the same page —
+       their loaders conflict. -->
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <div class="sk-ww-twitter-feed" data-embed-id="25590922"></div>
+  </div>
+
+  <script is:inline src="https://widgets.sociablekit.com/twitter-feed/widget.js" defer></script>
+</Layout>
