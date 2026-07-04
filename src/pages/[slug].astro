@@ -43,7 +43,7 @@ const postUrl = `${siteUrl}/${post.slug}/`;
       <img
         src={post.data.cover}
         alt={post.data.coverAlt ?? post.data.title}
-        class="h-72 w-full object-cover md:h-96"
+        class:list={['h-72 w-full md:h-96', post.data.coverFit === 'contain' ? 'object-contain' : 'object-cover']}
       />
     </div>
 

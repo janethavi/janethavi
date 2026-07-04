@@ -7,6 +7,7 @@ isoDate: "2019-04-15"
 readTime: 3 min read
 cover: /images/blog/quarantine/cover.jpg
 coverAlt: Working from home during COVID-19
+coverFit: contain
 order: 3
 ---
 

@@ -14,8 +14,8 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
     title="Written moments"
     subtitle="Unforgettable moments as writings.."
     image="/images/experiences/453653815_909414961230291_7586902564559473890_n-m2WQ8nl9bysyjWz4.jpg"
-    imagePos="22% 43%"
-    imageZoom={1.6}
+    imagePos="22% 40%"
+    imageZoom={1.4}
   />
 
   <div class="mx-auto max-w-6xl px-6 py-14">
@@ -28,7 +28,10 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
               <img
                 src={post.data.cover}
                 alt={post.data.title}
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                class:list={[
+                  'h-full w-full transition-transform duration-500 group-hover:scale-105',
+                  post.data.coverFit === 'contain' ? 'object-contain' : 'object-cover',
+                ]}
               />
             </div>
             <p class="mb-3 text-sm uppercase tracking-wider text-gray-500">{post.data.category}</p>

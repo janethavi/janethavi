@@ -14,6 +14,9 @@ const blog = defineCollection({
     readTime: z.string(), // e.g. 6 min read
     cover: z.string(), // path under /public, e.g. /images/blog/kolkata/cover.jpg
     coverAlt: z.string().optional(),
+    // 'cover' (default) fills the frame and may crop; use 'contain' for
+    // square/portrait covers that shouldn't be cropped (shows the whole image).
+    coverFit: z.enum(['cover', 'contain']).optional(),
     order: z.number(), // position on the Writings page (1 = first)
   }),
 });
