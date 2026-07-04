@@ -41,7 +41,7 @@ Tailwind custom colors (`tailwind.config.mjs`): `periwinkle #89b0f5` (buttons/li
 - **Blogs are Markdown.** To add a post, drop a new `src/content/blog/<slug>.md` with the frontmatter below — it auto-appears on Writings (ordered by `order`) and gets its own route at `/<slug>`. Raw HTML (image grids, YouTube embeds) is allowed inside the Markdown body.
 - **Keep it simple and easy to update.** Tailwind + minimal external CSS only. Don't add CSS unless Tailwind can't express it; new shared CSS goes in `src/styles/global.css`.
 - **Mobile-first / responsive.** Verify at 390px (headless Chrome `--window-size` has a ~500px floor — use CDP `Emulation.setDeviceMetricsOverride` for real mobile screenshots).
-- **Top-notch SEO.** Every page sets a unique title + description; canonical + hreflang x-default, OG/Twitter cards, JSON-LD (WebSite + Person in Layout, BlogPosting per post), auto sitemap via `@astrojs/sitemap` (pinned **3.2.1** — 3.7.x breaks on Astro 4), robots.txt, 301 redirects in `public/_redirects`.
+- **Top-notch SEO.** Every page sets a unique title + description (separator `|`, e.g. `About Me | Janeth Fernando`); canonical + hreflang x-default, OG/Twitter cards, `og:image:alt` (no hardcoded image dims — the photos are portrait), web manifest (`public/site.webmanifest`), JSON-LD (WebSite + Person in Layout, BlogPosting + BreadcrumbList per post), auto sitemap via `@astrojs/sitemap` (pinned **exactly 3.2.1** — 3.7.x breaks on Astro 4), robots.txt, 301 redirects in `public/_redirects`.
 - **Entrance animations**: `Layout.astro` adds `.anim-pre`/`.anim-in` via IntersectionObserver (behind `prefers-reduced-motion`); JS-added so crawlers/no-JS still see content.
 
 ### Blog post frontmatter
@@ -55,6 +55,8 @@ isoDate: "2026-03-07"        # MUST be quoted (zod expects a string, not a Date)
 readTime: 6 min read
 cover: /images/blog/kolkata/cover.jpg   # path under public/
 coverAlt: Alt text
+coverFit: contain            # optional; default 'cover'. Use 'contain' for
+                             # square/portrait covers that shouldn't be cropped.
 order: 1                     # position on Writings page (1 = first)
 ---
 ```
