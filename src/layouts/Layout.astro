@@ -201,8 +201,8 @@ const instagramPosts = [
       <div
         class="mx-auto grid max-w-screen-2xl grid-cols-1 items-center gap-8 px-8 py-6 md:grid-cols-3"
       >
-        <!-- Socials -->
-        <div>
+        <!-- Socials: title top, icons middle, copyright pinned to the bottom -->
+        <div class="flex h-full flex-col self-stretch">
           <p class="mb-6 text-2xl font-bold">Find me on socials</p>
           <div class="mb-4 flex items-center gap-8">
             <a
@@ -271,7 +271,7 @@ const instagramPosts = [
               >
             </a>
           </div>
-          <div class="mb-8 flex items-center gap-8 pl-8">
+          <div class="flex items-center gap-8 pl-9">
             <a
               href="https://medium.com/@janethavishka"
               target="_blank"
@@ -325,7 +325,7 @@ const instagramPosts = [
               >
             </a>
           </div>
-          <p class="text-sm text-gray-400">© {new Date().getFullYear()} All rights reserved.</p>
+          <p class="mt-auto pt-8 text-sm text-gray-400">© {new Date().getFullYear()} All rights reserved.</p>
         </div>
 
         <!-- Instagram grid: 6 latest posts, each linking to the post -->
