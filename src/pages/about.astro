@@ -44,6 +44,8 @@ This internship not only enhanced my technical skills but also broadened my unde
   {
     title: 'Work Life',
     image: '/images/about/img_1159.jpg',
+    // 9:16 original towers over the text — crop to 4:5 on desktop
+    imageAspect: 'md:aspect-[4/5]',
     text: `After completing four years of rigorous study at university, I made a pivotal decision to rejoin WSO2, this time as a Site Reliability Engineer (SRE), aligning my career more closely with cloud environments. This momentous step has proved immensely rewarding. As an SRE, I have extensively worked with technologies such as Kubernetes and Azure, which have become the cornerstone of my professional journey.
 
 My tenure at WSO2 has been marked by continuous growth and progression. Over time, I have evolved into an Associate Lead - Site Reliability Engineer, assuming greater responsibilities and contributing significantly to the organization's success. Working with Kubernetes has provided me with a deep understanding of container orchestration, scalability, and reliability, while Azure has offered a powerful platform to build and deploy cloud-based solutions.
@@ -77,7 +79,7 @@ This is where I am at the moment. Looking back, I have come a long way on this e
                 <img
                   src={ch.image}
                   alt={ch.title}
-                  class="h-72 w-full rounded-lg object-cover md:h-auto"
+                  class={`h-72 w-full rounded-lg object-cover md:h-auto ${ch.imageAspect ?? ''}`}
                   loading="lazy"
                 />
               </div>

@@ -1,5 +1,5 @@
 ---
-title: Being quarantined at home
+title: Quarantined at home
 excerpt: During COVID-19, I adapted to working from home, setting up a productive routine and using virtual tools to stay connected. Despite initial challenges, I found ways to stay motivated and balanced, leading to personal growth and resilience.
 category: GENERAL
 date: 4/15/2019
