@@ -1,8 +1,8 @@
 # Old Hostinger-style URLs -> clean slugs
-/janeth-fernando-about-me       /about          301
-/janeth-fernando-gallery        /gallery        301
-/janeth-fernando-writings       /writings       301
-/janeth-fernando-life-updates   /life-updates   301
-/janeth-fernando-experiences    /experiences    301
-/gallery/sinharaja              /sinharaja      301
-/gallery/bundala                /bundala        301
+/janeth-fernando-about-me       /about/          301
+/janeth-fernando-gallery        /gallery/        301
+/janeth-fernando-writings       /writings/       301
+/janeth-fernando-life-updates   /life-updates/   301
+/janeth-fernando-experiences    /experiences/    301
+/gallery/sinharaja              /sinharaja/      301
+/gallery/bundala                /bundala/        301

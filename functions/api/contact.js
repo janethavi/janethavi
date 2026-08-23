@@ -24,7 +24,7 @@ async function sendToDiscord(env, payload) {
           Authorization: `Bot ${env.DISCORD_TOKEN}`,
         },
         body: JSON.stringify(payload),
-      }
+      },
     );
     return res.ok;
   }
@@ -32,7 +32,7 @@ async function sendToDiscord(env, payload) {
 }
 
 export async function onRequestPost({ request, env }) {
-  const back = new URL('/about', request.url);
+  const back = new URL('/about/', request.url);
   back.hash = 'contactme';
 
   let name = '';

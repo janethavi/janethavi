@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "format": "prettier --write \"src/**/*.{astro,ts,css}\" \"functions/**/*.js\" \"*.mjs\"",
+    "format:check": "prettier --check \"src/**/*.{astro,ts,css}\" \"functions/**/*.js\" \"*.mjs\""
   },
   "dependencies": {
     "@astrojs/sitemap": "3.2.1",
