@@ -1,6 +1,22 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
+import feed from '../data/x-posts.json';
+
+// Posts and photos are synced into the repo by `npm run sync:updates`, so this
+// page is plain static HTML — no third-party script, nothing to load at runtime.
+const photos = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/updates/*.{jpg,jpeg,png,webp}',
+  { eager: true },
+);
+const photoFor = (file: string) => photos[`../assets/updates/${file}`]?.default;
+
+const posts = feed.posts.map((post) => ({
+  ...post,
+  photos: post.images.map(photoFor).filter(Boolean) as ImageMetadata[],
+}));
 ---
 
 <Layout
@@ -13,12 +29,73 @@ import PageHero from '../components/PageHero.astro';
     image="/images/life-updates/img_4048-YBgb396931SB2jrz.jpg"
   />
 
-  <!-- X (Twitter) feed widget (inline embed auto-sizes, so only the window
-       scrolls). Don't add other SociableKIT widget scripts on the same page —
-       their loaders conflict. -->
-  <div class="mx-auto max-w-6xl px-6 py-12">
-    <div class="sk-ww-twitter-feed" data-embed-id="25590922"></div>
-  </div>
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <div class="mb-10 flex flex-col items-center gap-4 text-center">
+      <h2 class="text-3xl font-bold text-gray-900">Latest from X</h2>
+      <p class="max-w-xl text-gray-600">
+        Short updates, half-finished projects and things worth sharing.
+      </p>
+      <a
+        href={feed.source}
+        target="_blank"
+        rel="noopener"
+        class="inline-block rounded-full bg-periwinkle px-8 py-3 font-semibold text-white transition-colors hover:text-ink"
+      >
+        Follow on X!
+      </a>
+    </div>
 
-  <script is:inline src="https://widgets.sociablekit.com/twitter-feed/widget.js" defer></script>
+    <!-- CSS columns give the feed a masonry look without any JavaScript. -->
+    <div class="gap-6 md:columns-2 lg:columns-3">
+      {
+        posts.map((post) => (
+          <article class="mb-6 break-inside-avoid rounded-2xl border border-gray-200 p-5 transition-shadow hover:shadow-lg">
+            <header class="mb-3 flex items-baseline justify-between gap-3">
+              <span class="font-semibold text-gray-900">@JanethAvishka</span>
+              <time datetime={post.date} class="text-sm text-gray-500">
+                {post.displayDate}
+              </time>
+            </header>
+
+            <div class="leading-relaxed text-gray-700" set:html={post.html} />
+
+            {post.photos.length > 0 && (
+              <div
+                class:list={[
+                  'mt-4 grid gap-2',
+                  post.photos.length === 1 ? 'grid-cols-1' : 'grid-cols-2',
+                ]}
+              >
+                {post.photos.map((photo) => (
+                  <Image
+                    src={photo}
+                    alt={`Photo from the post: ${post.text.slice(0, 90)}`}
+                    width={640}
+                    loading="lazy"
+                    class:list={[
+                      'w-full rounded-lg object-cover',
+                      post.photos.length === 1 ? 'max-h-96' : 'aspect-square',
+                    ]}
+                  />
+                ))}
+              </div>
+            )}
+
+            <a
+              href={post.url}
+              target="_blank"
+              rel="noopener"
+              class="mt-4 inline-block text-sm font-medium text-periwinkle hover:underline"
+            >
+              View on X →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="mt-10 text-center text-sm text-gray-400">
+      Synced from X on {feed.syncedAt}
+    </p>
+  </div>
 </Layout>

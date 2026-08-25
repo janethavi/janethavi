@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "sync:updates": "node scripts/sync-updates.mjs",
     "format": "prettier --write \"src/**/*.{astro,ts,css}\" \"functions/**/*.js\" \"*.mjs\"",
     "format:check": "prettier --check \"src/**/*.{astro,ts,css}\" \"functions/**/*.js\" \"*.mjs\""
   },
