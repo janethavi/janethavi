@@ -1,0 +1,33 @@
+# Cloudflare Pages response headers.
+# Rules are path patterns; every matching rule applies. Deploys pick this up
+# automatically — check a header with: curl -sI https://janethfernando.me/ | grep -i <name>
+
+/*
+  # Framing, sniffing and referrer leakage.
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+
+  # Nothing here needs a camera, a microphone or your location.
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()
+
+  # HSTS for the apex only. Add `; includeSubDomains` once you're sure every
+  # subdomain (homelab included) is HTTPS-only — it is not reversible quickly.
+  Strict-Transport-Security: max-age=31536000
+
+  # The site is first-party apart from Google Fonts and the YouTube embeds in
+  # blog posts. Astro bundles its scripts to /_astro/*.js, so script-src needs
+  # no 'unsafe-inline'; style-src does, for the inline style="" attributes in
+  # PageHero and the blog image grids.
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.youtube.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# Content-hashed by the build — the filename changes whenever the bytes do.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Photos under public/ are NOT content-hashed, so a year of immutable caching
+# means returning visitors keep the old file if you overwrite one in place.
+# When you replace a photo, give it a new filename.
+/images/*
+  Cache-Control: public, max-age=31536000, immutable

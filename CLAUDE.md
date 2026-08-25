@@ -88,5 +88,27 @@ can't replace this — its free tier is write-only, and reading a timeline start
 ## Footer Instagram grid
 Static 3×2 grid of 6 posts (no third-party widget — free widget tiers require branding, which the user does not want). Codes are in `instagramPosts` in `Layout.astro`; images at `public/images/instagram/<code>.webp`. To refresh, download new thumbnails and update the codes array.
 
+## Response headers (`public/_headers`)
+One file, two jobs. Cloudflare Pages applies every rule whose path pattern matches.
+
+**Caching.** `/_astro/*` and `/images/*` get `max-age=31536000, immutable` (the default was four
+hours, re-validated on every visit). `/_astro/` is content-hashed so this is always safe; photos
+under `public/images/` are not — **give a photo a new filename when you replace it**, or returning
+visitors keep the old one for a year.
+
+**Security.** HSTS (apex only — `includeSubDomains` is deliberately absent until every subdomain is
+HTTPS-only), `X-Frame-Options: DENY`, Permissions-Policy, COOP, and a CSP.
+
+The CSP is strict because the site is almost entirely first-party: `script-src 'self'` with no
+`'unsafe-inline'` (Astro bundles hoisted scripts to `/_astro/*.js`; JSON-LD blocks aren't executable
+so CSP ignores them). The only external origins allowed are Google Fonts (`style-src`/`font-src`)
+and `https://www.youtube.com` in `frame-src` for the blog embeds. `style-src` needs `'unsafe-inline'`
+for the inline `style=""` attributes in `PageHero` and the blog image grids.
+
+**Adding anything third-party means editing the CSP first**, or it will be silently blocked in
+production while working fine in `astro preview` (which serves no headers). Cloudflare Web Analytics,
+for example, needs `script-src https://static.cloudflareinsights.com` and
+`connect-src https://cloudflareinsights.com`.
+
 ## Assets note
 Old Hostinger/Zyro image files sometimes had shuffled contents vs. filenames — originals were re-downloaded from `assets.zyrosite.com`. When adding/replacing an image, confirm the file's actual contents match its name.
