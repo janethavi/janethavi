@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const destinations = [
+  { label: 'Home', href: '/', description: 'Start over from the beginning.' },
+  { label: 'About Me', href: '/about/', description: 'My story, from Windows 98 to WSO2.' },
+  { label: 'Gallery', href: '/gallery/', description: 'Photos from the forests, parks and roads.' },
+  {
+    label: 'Writings',
+    href: '/writings/',
+    description: 'Blogs on travel, tech and everything between.',
+  },
+  { label: 'Life Updates', href: '/life-updates/', description: 'Life between the lines.' },
+  {
+    label: 'Experiences',
+    href: '/experiences/',
+    description: 'Talks, workshops and volunteering.',
+  },
+];
+---
+
+<Layout
+  title="Page Not Found | Janeth Fernando"
+  description="This page doesn't exist. Head back home or explore my writings, gallery and experiences."
+  noindex
+>
+  <PageHero
+    title="404 — Lost the trail"
+    subtitle="This page doesn't exist (or it moved). Let's get you back on track.."
+    image="/images/about/img_0293-mp89GbB4bLUqMVMD.JPG"
+    imagePos="50% 25%"
+  />
+
+  <section class="mx-auto max-w-4xl px-6 py-14 text-center">
+    <h2 class="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">Nothing here</h2>
+    <p class="mx-auto mb-8 max-w-xl text-gray-600">
+      The link you followed is broken, out of date, or slightly mistyped. Everything on the site is
+      one of these six pages away.
+    </p>
+
+    <a
+      href="/"
+      class="inline-block rounded-full bg-periwinkle px-10 py-3 font-semibold text-white transition-colors hover:text-ink"
+    >
+      Take Me Home!
+    </a>
+
+    <div class="mt-14 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-3">
+      {
+        destinations.map((item) => (
+          <a
+            href={item.href}
+            class="group rounded-2xl border border-gray-200 p-5 transition-all hover:-translate-y-1 hover:border-periwinkle hover:shadow-lg"
+          >
+            <span class="mb-1 block font-semibold text-gray-900 group-hover:text-periwinkle">
+              {item.label}
+            </span>
+            <span class="block text-sm text-gray-600">{item.description}</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

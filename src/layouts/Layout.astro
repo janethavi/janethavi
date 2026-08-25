@@ -6,12 +6,15 @@ interface Props {
   description?: string;
   image?: string;
   type?: string;
+  /** Keep the page out of search results (used by the 404 page) */
+  noindex?: boolean;
 }
 const {
   title,
   description = 'Janeth Fernando — Associate Lead SRE at WSO2, content creator, and adventure seeker from Sri Lanka.',
   image = '/images/about/profile-hero.jpg',
   type = 'website',
+  noindex = false,
 } = Astro.props;
 const siteUrl = 'https://janethfernando.me';
 const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
@@ -44,8 +47,14 @@ const instagramPosts = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+    {
+      !noindex && (
+        <>
+          <link rel="canonical" href={canonicalUrl} />
+          <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+        </>
+      )
+    }
 
     <!-- Open Graph -->
     <meta property="og:type" content={type} />
@@ -67,7 +76,10 @@ const instagramPosts = [
 
     <!-- Additional SEO -->
     <meta name="author" content="Janeth Fernando" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'}
+    />
     <meta name="theme-color" content="#ffffff" />
     <link rel="manifest" href="/site.webmanifest" />
 
