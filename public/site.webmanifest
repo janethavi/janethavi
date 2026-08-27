@@ -1,17 +1,29 @@
 {
   "name": "Janeth Fernando",
   "short_name": "Janeth",
-  "description": "Personal site of Janeth Fernando — SRE at WSO2, content creator, and explorer.",
+  "description": "Personal site of Janeth Fernando \u2014 SRE at WSO2, content creator, and explorer.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0d131a",
   "icons": [
     {
-      "src": "/images/cropped-bitmoji-20190612081223-1-YD04BnzpqvueRqWY.png",
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
