@@ -4,7 +4,7 @@
  *   node scripts/make-icons.mjs
  *
  * The source is a 512px full-body figure — unreadable once shrunk to a browser
- * tab — so this crops the head, flattens it onto the site's ink background
+ * tab — so this crops the head, flattens it onto the site's periwinkle accent
  * (transparent favicons render badly on iOS and in dark browser chrome) and
  * writes every size the browsers, iOS and the web manifest each want.
  */
@@ -13,7 +13,7 @@ import { writeFile } from 'node:fs/promises';
 
 const SRC = 'public/images/cropped-bitmoji-20190612081223-1-YD04BnzpqvueRqWY.png';
 const HEAD = { left: 288, top: 100, width: 175, height: 175 };
-const BG = '#0d131a'; // ink — same as the manifest theme_color
+const BG = '#89b0f5'; // periwinkle — the site's accent
 
 const head = await sharp(SRC).extract(HEAD).toBuffer();
 const at = (size, background = BG) =>
@@ -56,7 +56,7 @@ await writeFile('public/icons/icon-512.png', await at(512));
 await writeFile('public/apple-touch-icon.png', await at(180));
 
 // Maskable icons get cropped to a circular safe zone, so the head sits in the
-// middle 80% with ink padding around it.
+// middle 80% with periwinkle padding around it.
 const inner = await sharp(head).resize(410, 410).toBuffer();
 await writeFile(
   'public/icons/icon-maskable-512.png',
