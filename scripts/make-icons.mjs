@@ -4,20 +4,42 @@
  *   node scripts/make-icons.mjs
  *
  * The source is a 512px full-body figure — unreadable once shrunk to a browser
- * tab — so this crops the head, flattens it onto the site's periwinkle accent
- * (transparent favicons render badly on iOS and in dark browser chrome) and
- * writes every size the browsers, iOS and the web manifest each want.
+ * tab — so this crops the head, sits it on a periwinkle disc (the site's accent;
+ * a flat background beats transparency in dark browser chrome) and writes every
+ * size the browsers, iOS and the web manifest each want.
+ *
+ * The tab and manifest icons are circles: browsers and Android draw them
+ * untouched, and a disc reads as a portrait rather than a pasted-on tile. The
+ * two the platform masks itself — apple-touch-icon and the maskable — stay
+ * full-bleed squares, or iOS would composite the circle's corners onto black.
  */
 import sharp from 'sharp';
 import { writeFile } from 'node:fs/promises';
 
 const SRC = 'public/images/cropped-bitmoji-20190612081223-1-YD04BnzpqvueRqWY.png';
-const HEAD = { left: 288, top: 100, width: 175, height: 175 };
+// Framed wider than the head itself so the hat brim and chin clear the circle.
+const HEAD = { left: 262, top: 96, width: 196, height: 196 };
 const BG = '#89b0f5'; // periwinkle — the site's accent
 
 const head = await sharp(SRC).extract(HEAD).toBuffer();
-const at = (size, background = BG) =>
-  sharp(head).resize(size, size).flatten({ background }).png({ compressionLevel: 9, palette: true }).toBuffer();
+const png = (img) => img.png({ compressionLevel: 9, palette: true }).toBuffer();
+
+const circle = (size) =>
+  Buffer.from(
+    `<svg width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${size / 2}" fill="#fff"/></svg>`
+  );
+
+/** The head on a periwinkle disc, with the square's corners cut away. */
+const at = (size) =>
+  png(
+    sharp(head)
+      .resize(size, size)
+      .flatten({ background: BG })
+      .composite([{ input: circle(size), blend: 'dest-in' }])
+  );
+
+/** Same, left square — for the platforms that apply their own mask. */
+const square = (size) => png(sharp(head).resize(size, size).flatten({ background: BG }));
 
 /** ICO container wrapping PNGs — supported everywhere that matters. */
 function buildIco(images) {
@@ -52,18 +74,20 @@ await writeFile(
 await writeFile('public/icons/icon-96.png', await at(96));
 await writeFile('public/icons/icon-192.png', await at(192));
 await writeFile('public/icons/icon-512.png', await at(512));
-// iOS composites transparency onto black, so this one is deliberately opaque too.
-await writeFile('public/apple-touch-icon.png', await at(180));
+// iOS rounds the corners itself and composites transparency onto black, so this
+// one stays a full-bleed square.
+await writeFile('public/apple-touch-icon.png', await square(180));
 
 // Maskable icons get cropped to a circular safe zone, so the head sits in the
 // middle 80% with periwinkle padding around it.
 const inner = await sharp(head).resize(410, 410).toBuffer();
 await writeFile(
   'public/icons/icon-maskable-512.png',
-  await sharp({ create: { width: 512, height: 512, channels: 4, background: BG } })
-    .composite([{ input: inner, left: 51, top: 51 }])
-    .png({ compressionLevel: 9, palette: true })
-    .toBuffer()
+  await png(
+    sharp({ create: { width: 512, height: 512, channels: 4, background: BG } }).composite([
+      { input: inner, left: 51, top: 51 },
+    ])
+  )
 );
 
 process.stdout.write(`favicon.ico (${ico.join('/')}), icon-96/192/512, maskable-512, apple-touch-icon\n`);
