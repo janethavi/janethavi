@@ -1,6 +1,6 @@
 ---
 title: Quarantined at home
-excerpt: During COVID-19, I adapted to working from home, setting up a productive routine and using virtual tools to stay connected. Despite initial challenges, I found ways to stay motivated and balanced, leading to personal growth and resilience.
+excerpt: Sri Lanka went under curfew and an extra hour of sleep slid into monotony, until the singing, cooking and dashboards people invented filled the days.
 category: GENERAL
 date: 4/15/2019
 isoDate: "2019-04-15"

@@ -1,6 +1,6 @@
 ---
 title: Project Sertum
-excerpt: Sertum is an IoT robot designed to serve and clean, using an Arduino Mega board and Bluetooth. It can serve food, clean surfaces, and detect obstacles, all controlled through an Android app. Perfect for both homes and restaurants.
+excerpt: An IoT robot on an Arduino Mega, driven over Bluetooth from an Android app. Sertum serves food, cleans surfaces, and spots obstacles before it hits them.
 category: GENERAL
 date: 4/15/2019
 isoDate: "2019-04-15"

@@ -23,7 +23,7 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
     <div class="mb-20 grid gap-x-8 gap-y-14 md:grid-cols-3">
       {
         posts.map((post) => (
-          <a href={`/${post.slug}/`} class="group block">
+          <a href={`/${post.slug}/`} class="group flex flex-col">
             <div class="mb-6 aspect-[16/10] overflow-hidden rounded-md bg-gray-100">
               <img
                 src={post.data.cover}
@@ -36,8 +36,8 @@ const posts = (await getCollection('blog')).sort((a, b) => a.data.order - b.data
             </div>
             <p class="mb-3 text-sm uppercase tracking-wider text-gray-500">{post.data.category}</p>
             <h2 class="mb-3 text-2xl font-bold text-gray-900">{post.data.title}</h2>
-            <p class="mb-4 leading-relaxed text-gray-600">{post.data.excerpt}</p>
-            <p class="text-gray-500">
+            <p class="mb-4 line-clamp-4 leading-relaxed text-gray-600">{post.data.excerpt}</p>
+            <p class="mt-auto text-gray-500">
               {post.data.date} · {post.data.readTime}
             </p>
           </a>

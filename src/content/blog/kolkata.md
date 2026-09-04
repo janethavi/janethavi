@@ -1,6 +1,6 @@
 ---
 title: Kolkata
-excerpt: We flew from Sri Lanka for a professional work onsite in Kolkata. It left with so much more than we thought. This article is about the people who gave us homemade food, sparked conversations about culture and language, and sent us back home with a blessing.
+excerpt: We flew from Sri Lanka for a work onsite in Kolkata. The city sent us home with homemade food, chai nobody let us pay for, and a story worth telling.
 category: GENERAL
 date: 3/7/2026
 isoDate: "2026-03-07"

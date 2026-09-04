@@ -1,6 +1,6 @@
 ---
 title: Camping at Wangedigala
-excerpt: An unforgettable camping adventure at Wangedigala started by traversing a pine forest and experiencing breathtaking sunrises. This journey created lasting memories in the heart of the mountains.
+excerpt: A climb through the pine forest above Kalupahana to camp on the summit of Wangedigala, where strangers shared their lunch and the sunrise repaid the ache.
 category: ADVENTURE
 date: 3/14/2020
 isoDate: "2020-03-14"
