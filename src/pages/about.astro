@@ -53,6 +53,37 @@ My tenure at WSO2 has been marked by continuous growth and progression. Over tim
 This is where I am at the moment. Looking back, I have come a long way on this exciting journey. From my early fascination with computers sparked by my father's "big computer" to landing as a Site Reliability Engineer, the path has been filled with growth and valuable experiences. I am grateful for the opportunities that have come my way and excited about future prospects in the ever-evolving tech world. The road ahead holds many more possibilities to explore, innovate, and contribute to the expanding world of technology.`,
   },
 ];
+
+const degrees = [
+  {
+    name: 'BEng (Hons) Software Engineering',
+    result: 'First Class Honours',
+    school: 'University of Westminster',
+  },
+  { name: 'MSc Big Data Analytics', result: 'Merit', school: 'Robert Gordon University' },
+];
+
+// Badges from https://www.credly.com/users/janeth-fernando
+const certifications = [
+  {
+    name: 'Certified Kubernetes Administrator',
+    issuer: 'The Linux Foundation',
+    image: '/images/about/credly/cka.webp',
+    badgeId: '708a5f7f-5583-4633-99b2-4c368ac4d2aa',
+  },
+  {
+    name: 'Certified Kubernetes Application Developer',
+    issuer: 'The Linux Foundation',
+    image: '/images/about/credly/ckad.webp',
+    badgeId: '6f7c8a4e-54c1-45d6-b8e4-93f2688e6fff',
+  },
+  {
+    name: 'Azure Fundamentals',
+    issuer: 'Microsoft',
+    image: '/images/about/credly/azure-fundamentals.webp',
+    badgeId: '80e60166-e5bf-4c8f-9656-c9d3ba904172',
+  },
+];
 ---
 
 <Layout
@@ -68,14 +99,14 @@ This is where I am at the moment. Looking back, I have come a long way on this e
 
   <!-- Content -->
   <div class="mx-auto w-full px-6 py-14 md:w-[84%] md:max-w-none md:px-0">
-    <div class="space-y-16">
+    <div class="space-y-12">
       {
         chapters.map((ch, i) => (
           <div
-            class={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-start gap-6`}
+            class={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-start gap-6 md:items-center`}
           >
             {ch.image && (
-              <div class="w-full flex-shrink-0 md:w-[40%]">
+              <div class="w-full flex-shrink-0 md:w-[30%]">
                 <img
                   src={ch.image}
                   alt={ch.title}
@@ -86,7 +117,7 @@ This is where I am at the moment. Looking back, I have come a long way on this e
             )}
             <div class="flex-1">
               <h2 class="mb-5 text-4xl font-bold text-gray-900">{ch.title} ...</h2>
-              <div class="space-y-4 text-justify text-lg leading-relaxed text-gray-700">
+              <div class="space-y-4 md:text-justify text-lg leading-relaxed text-gray-700">
                 {ch.text.split('\n\n').map((p) => (
                   <p>{p}</p>
                 ))}
@@ -98,13 +129,47 @@ This is where I am at the moment. Looking back, I have come a long way on this e
     </div>
   </div>
 
-  <!-- Credly CTA -->
+  <!-- Academic & professional qualifications -->
   <section class="px-6 py-14">
-    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-10 md:flex-row">
-      <div class="flex-1 text-center">
+    <div class="mx-auto max-w-6xl">
+      <div class="text-center">
         <h2 class="mx-auto mb-8 max-w-[820px] text-3xl font-bold text-gray-900 md:text-4xl">
-          Checkout Credly for my professional qualifications
+          Academic and professional qualifications
         </h2>
+        <!-- 5 across on desktop; on phones degrees share one row (span 3/6), badges the next (span 2/6).
+             Each item spans 3 subgrid rows (icon / title / details) so the text lines up across items. -->
+        <ul class="mx-auto mb-2 grid max-w-5xl grid-cols-6 gap-x-4 gap-y-2 md:mb-10 md:grid-cols-5 md:gap-x-6">
+          {
+            degrees.map((d) => (
+              <li class="col-span-3 row-span-3 grid grid-rows-subgrid justify-items-center text-gray-700 md:col-span-1">
+                <span aria-hidden="true" class="flex h-20 items-center text-6xl md:h-24 md:text-7xl">
+                  🎓
+                </span>
+                <span class="text-sm font-semibold">{d.name}</span>
+                <span class="pb-8 text-xs md:pb-0">
+                  <span class="block text-gray-500">{d.school}</span>
+                  {d.result}
+                </span>
+              </li>
+            ))
+          }
+          {
+            certifications.map((c) => (
+              <li class="col-span-2 row-span-3 grid grid-rows-subgrid md:col-span-1">
+                <a
+                  href={`https://www.credly.com/badges/${c.badgeId}/public_url`}
+                  target="_blank"
+                  rel="noopener"
+                  class="group row-span-3 grid grid-rows-subgrid justify-items-center text-gray-700"
+                >
+                  <img src={c.image} alt={`${c.name} badge`} class="h-20 w-20 md:h-24 md:w-24" loading="lazy" />
+                  <span class="text-sm font-semibold group-hover:text-periwinkle">{c.name}</span>
+                  <span class="pb-8 text-xs text-gray-500 md:pb-0">{c.issuer}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
         <a
           href="https://www.credly.com/users/janeth-fernando"
           target="_blank"
@@ -113,15 +178,6 @@ This is where I am at the moment. Looking back, I have come a long way on this e
         >
           Visit Credly!
         </a>
-      </div>
-      <div class="flex-shrink-0">
-        <img
-          src="/images/about/img_6307-AVLbW9zQZOirnOva.jpg"
-          alt="Janeth Fernando graduation"
-          class="h-56 w-56 rounded-full object-cover md:h-64 md:w-64"
-          style="object-position: 50% 22%"
-          loading="lazy"
-        />
       </div>
     </div>
   </section>
@@ -155,7 +211,7 @@ This is where I am at the moment. Looking back, I have come a long way on this e
                 name="name"
                 placeholder="Let me know your name"
                 required
-                class="w-full rounded-xl border-0 bg-white px-5 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-periwinkle"
+                class="w-full rounded-xl border-0 bg-white px-5 py-3 text-base text-gray-900 placeholder-gray-400 md:text-sm focus:outline-none focus:ring-2 focus:ring-periwinkle"
               />
             </div>
             <div>
@@ -165,7 +221,7 @@ This is where I am at the moment. Looking back, I have come a long way on this e
                 name="email"
                 placeholder="Let me know your email address"
                 required
-                class="w-full rounded-xl border-0 bg-white px-5 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-periwinkle"
+                class="w-full rounded-xl border-0 bg-white px-5 py-3 text-base text-gray-900 placeholder-gray-400 md:text-sm focus:outline-none focus:ring-2 focus:ring-periwinkle"
               />
             </div>
             <div>
@@ -175,7 +231,7 @@ This is where I am at the moment. Looking back, I have come a long way on this e
                 placeholder="Let me hear from you"
                 rows="5"
                 required
-                class="w-full resize-none rounded-xl border-0 bg-white px-5 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-periwinkle"
+                class="w-full resize-none rounded-xl border-0 bg-white px-5 py-3 text-base text-gray-900 placeholder-gray-400 md:text-sm focus:outline-none focus:ring-2 focus:ring-periwinkle"
               ></textarea>
             </div>
             <div class="flex justify-center">
