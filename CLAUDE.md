@@ -30,13 +30,13 @@ src/
                             #   life-updates, experiences, sinharaja, bundala, [slug]
   content/blog/*.md         # blog posts (Markdown) — see below
   content/config.ts         # blog frontmatter schema
-  data/x-posts.json         # generated X feed snapshot for Life Updates — see below
+  data/x-posts.json         # X posts shown on Life Updates — see below
   assets/updates/           # generated photos for those posts (astro:assets optimises them)
   styles/global.css         # the only custom CSS (animations + .blog-prose)
-scripts/sync-updates.mjs    # refreshes the two generated paths above
+scripts/add-update.mjs      # adds X posts to the two paths above
 functions/api/contact.js    # Cloudflare Pages Function: contact form -> Discord
 public/                     # static assets; _redirects, robots.txt, images/
-.github/workflows/          # sync-updates.yml — runs the sync daily and commits
+.github/workflows/          # add-update.yml — one-click "add this post" from the Actions tab
 ```
 
 Tailwind custom colors (`tailwind.config.mjs`): `periwinkle #89b0f5` (buttons/links), `ink #0d131a` (button hover text), plus `gold`/`dark`. Font: Montserrat.
@@ -71,16 +71,23 @@ order: 1                     # position on Writings page (1 = first)
 used to be a SociableKIT embed: 69 KB of JS that tracked visitors and left the page blank if the
 vendor was slow or blocked.
 
-`npm run sync:updates` regenerates the snapshot. The script fetches the same feed the widget used
-(`data.accentapi.com/feed/<embed-id>.json` — public, no auth), collapses the duplicate entries that
-feed returns for each tweet, strips the markup it leaks into `tweet_text`, resolves the `t.co`
-links, and downloads the photos into `src/assets/updates/`. **Both outputs are committed**, so the
-build never touches the network and the page survives the vendor disappearing — only new posts
-would stop arriving.
+Posts are added **by link**, straight from X — no vendor in between:
+```bash
+npm run add:update -- https://x.com/JanethAvishka/status/<id>   # several links/ids are fine
+```
+Or from the GitHub Actions tab: **Add life update → Run workflow**, paste the link(s). It commits
+and pushes, which triggers the Pages rebuild. That works from the GitHub mobile app too.
 
-`.github/workflows/sync-updates.yml` runs it daily and commits any change, which triggers the Pages
-rebuild. So posts appear within a day; run the script by hand to pull one in sooner. X's own API
-can't replace this — its free tier is write-only, and reading a timeline starts at the paid tiers.
+The script calls `cdn.syndication.twimg.com/tweet-result` (the public endpoint behind X's embedded
+tweets, no auth), builds the HTML from X's entities (real link destinations, @mentions, #hashtags),
+and downloads full-size photos (`?name=large`) into `src/assets/updates/`. Re-adding a post that's
+already there refreshes it. **Both outputs are committed**, so the build never touches the network.
+To remove a post, delete its entry from the JSON (the script lists unreferenced images to delete).
+
+Why by link and not automatic: X has no free way to *list* a timeline. The API's free tier is
+write-only, and the public timeline endpoint returns 429 to logged-out requests. Until Oct 2026 this
+read SociableKIT's feed (`data.accentapi.com`) daily, but that feed silently stopped refreshing after
+Aug 2026 (probably because the widget was no longer embedded anywhere), so it was dropped.
 
 ## Contact form → Discord
 `functions/api/contact.js` receives the About-page form POST (`name`, `email`, `message`, honeypot `website`), validates, and posts a Discord embed. It uses `DISCORD_WEBHOOK_URL` if set, else falls back to the bot API (`DISCORD_TOKEN` + `DISCORD_CHANNEL_ID`, the same bot as Janeth's homelab). Then 303-redirects back to `/about?sent=1|0#contactme`. The form 404s on plain `astro preview` (Functions only run on the Cloudflare runtime or `npx wrangler pages dev dist`).

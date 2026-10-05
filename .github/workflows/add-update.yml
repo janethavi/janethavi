@@ -1,0 +1,44 @@
+# Adds an X post to the Life Updates page — no third-party service involved.
+#
+# Actions tab → "Add life update" → Run workflow → paste the post link(s).
+# Runs scripts/add-update.mjs, commits the post and its photos, and that push
+# triggers the Cloudflare Pages rebuild. Works from the GitHub mobile app too.
+name: Add life update
+
+on:
+  workflow_dispatch:
+    inputs:
+      posts:
+        description: 'X post link(s) — separate several with spaces'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # The script uses only Node built-ins, so no npm install is needed.
+      # The input goes through env (not inlined) so a pasted value can't inject shell.
+      - run: node scripts/add-update.mjs $POSTS
+        env:
+          POSTS: ${{ inputs.posts }}
+
+      - name: Commit
+        run: |
+          if [ -z "$(git status --porcelain src/data/x-posts.json src/assets/updates)" ]; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/x-posts.json src/assets/updates
+          git commit -m "chore(updates): add life update from X"
+          git push

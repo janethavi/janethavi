@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import feed from '../data/x-posts.json';
 
-// Posts and photos are synced into the repo by `npm run sync:updates`, so this
+// Posts and photos are added to the repo by `npm run add:update`, so this
 // page is plain static HTML — no third-party script, nothing to load at runtime.
 const photos = import.meta.glob<{ default: ImageMetadata }>(
   '../assets/updates/*.{jpg,jpeg,png,webp}',
