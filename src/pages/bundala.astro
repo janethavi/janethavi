@@ -20,12 +20,27 @@ const images = [
   'img_2323-mk3958Za4ZuypKNR.JPG',
   'img_2234-Yan9zMeE1xi7W8o2.JPG',
 ];
+
+const siteUrl = 'https://janethfernando.me';
 ---
 
 <Layout
   title="Bundala | Janeth Fernando"
   description="Bundala National Park — a UNESCO Biosphere Reserve in southeast Sri Lanka."
 >
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Gallery', item: `${siteUrl}/gallery/` },
+        { '@type': 'ListItem', position: 2, name: 'Bundala Park', item: `${siteUrl}/bundala/` },
+      ],
+    })}
+  />
+
   <div class="mx-auto max-w-6xl px-6 py-16">
     <div class="mb-12 text-center">
       <h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Bundala Park</h1>
@@ -45,6 +60,23 @@ const images = [
           />
         ))
       }
+    </div>
+
+    <!-- Back link -->
+    <div class="mt-16 border-t border-gray-200 pt-8">
+      <a
+        href="/gallery/"
+        class="inline-flex items-center gap-2 font-medium text-periwinkle transition-all hover:gap-3"
+      >
+        <svg class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+        >
+        Back to Gallery
+      </a>
     </div>
   </div>
 </Layout>
