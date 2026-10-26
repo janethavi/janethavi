@@ -66,6 +66,12 @@ const degrees = [
 // Badges from https://www.credly.com/users/janeth-fernando
 const certifications = [
   {
+    name: 'AWS Certified Solutions Architect – Associate',
+    issuer: 'Amazon Web Services',
+    image: '/images/about/credly/aws-solutions-architect-associate.webp',
+    badgeId: '78c146f6-ee1a-42e2-a528-0d4cf04d9899',
+  },
+  {
     name: 'Certified Kubernetes Administrator',
     issuer: 'The Linux Foundation',
     image: '/images/about/credly/cka.webp',
@@ -136,9 +142,9 @@ const certifications = [
         <h2 class="mx-auto mb-8 max-w-[820px] text-3xl font-bold text-gray-900 md:text-4xl">
           Academic and professional qualifications
         </h2>
-        <!-- 5 across on desktop; on phones degrees share one row (span 3/6), badges the next (span 2/6).
+        <!-- 6 across on desktop; on phones degrees share one row and badges go two per row (all span 3/6).
              Each item spans 3 subgrid rows (icon / title / details) so the text lines up across items. -->
-        <ul class="mx-auto mb-2 grid max-w-5xl grid-cols-6 gap-x-4 gap-y-2 md:mb-10 md:grid-cols-5 md:gap-x-6">
+        <ul class="mx-auto mb-2 grid max-w-5xl grid-cols-6 gap-x-4 gap-y-2 md:mb-10 md:grid-cols-6 md:gap-x-6">
           {
             degrees.map((d) => (
               <li class="col-span-3 row-span-3 grid grid-rows-subgrid justify-items-center text-gray-700 md:col-span-1">
@@ -155,7 +161,7 @@ const certifications = [
           }
           {
             certifications.map((c) => (
-              <li class="col-span-2 row-span-3 grid grid-rows-subgrid md:col-span-1">
+              <li class="col-span-3 row-span-3 grid grid-rows-subgrid md:col-span-1">
                 <a
                   href={`https://www.credly.com/badges/${c.badgeId}/public_url`}
                   target="_blank"
